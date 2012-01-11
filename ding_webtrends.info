@@ -1,0 +1,6 @@
+name = Ding! WebTrends
+description = Adds Ding-specific tracking of webtrends-events.
+package = Ding!
+core = 6.x
+dependencies[] = webtrends
+

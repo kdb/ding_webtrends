@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * Implements hook_init().
+ */
+function ding_webtrends_init() {
+  drupal_add_js(drupal_get_path('module', 'ding_webtrends') .  '/js/ding_webtrends.js');
+
+  // Add a special meta-tag on the page signifying that we're logged in.
+  drupal_set_html_head('<meta name="DCSext.Login" content="1" />');
+}
+
