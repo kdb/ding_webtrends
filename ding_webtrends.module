@@ -12,3 +12,28 @@ function ding_webtrends_init() {
   }
 }
 
+/**
+ * Implements hook_form_alter().
+ */
+function ding_webtrends_form_alter(&$form, &$form_state, $form_id) {
+  switch ($form_id) {
+    case 'user_login':
+    case 'user_login_block':
+      $form['#validate'][] = 'ding_webtrends_user_login_validate_check';
+  }
+}
+
+/**
+ * Extra validation for the login form.
+ */
+function ding_webtrends_user_login_validate_check($form, &$form_state) {
+  // If user is still anonymous when we get to the end of the chain of
+  // validation functions for the user login form, it means that
+  // authentication failed. Set a meta tag, so this fact will be sent
+  // along to webtrends.
+  if (user_is_anonymous()) {
+    drupal_set_html_head('<meta name="WT.si_n" content="Login" />');
+    drupal_set_html_head('<meta name="WT.si_x" content="2" />');
+  }
+}
+
