@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Module providing extra Webtrends tracking for Ding sites.
+ */
 
 /**
  * Implements hook_init().
@@ -36,4 +40,3 @@ function ding_webtrends_user_login_validate_check($form, &$form_state) {
     drupal_set_html_head('<meta name="WT.si_x" content="2" />');
   }
 }
-
