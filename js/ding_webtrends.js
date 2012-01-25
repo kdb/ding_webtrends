@@ -3,7 +3,7 @@ jQuery(function($) {
   "use strict";
 
   // When the user clicks the login form, we track that with webtrends.
-  $("#user-login-form .form-submit").mouseup(function () {
+  $(".ding-login-form .form-submit").mouseup(function () {
     dcsMultiTrack('DCS.dcsuri', '/login/Step1', 'WT.ti', 'Login-Step1', 'WT.si_n', 'Login', 'WT.si_x', '1', 'WT.dl', '0');
   });
 

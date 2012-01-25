@@ -23,6 +23,14 @@ function ding_webtrends_form_alter(&$form, &$form_state, $form_id) {
   switch ($form_id) {
     case 'user_login':
     case 'user_login_block':
+      // Add a class to the login forms, since they get the same ID,
+      // breaking the event handling if more than one is present on the
+      // same page, since they have the same ID.
+      if (!empty($form['#attributes']['class'])) {
+        $form['#attributes']['class'] .= ' ding-login-form';
+      }
+      $form['#attributes']['class'] = 'ding-login-form';
+
       $form['#validate'][] = 'ding_webtrends_user_login_validate_check';
   }
 }
