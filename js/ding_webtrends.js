@@ -1,10 +1,16 @@
 /*global dcsMultiTrack */
+
+// Google Analytics event queue.
+var _gaq = _gaq || [];
+
 jQuery(function($) {
   "use strict";
 
   // Track a log in action.
   var logInAction = function () {
     dcsMultiTrack('DCS.dcsuri', '/login/Step1', 'WT.ti', 'Login-Step1', 'WT.si_n', 'Login', 'WT.si_x', '1', 'WT.dl', '0');
+
+    _gaq.push(['_trackEvent', 'Login', 'Form submitted']);
   };
 
   // When the user clicks the login form, we track that with webtrends.
@@ -25,6 +31,8 @@ jQuery(function($) {
         matID = /ding\/cart\/add\/(\d+)/.exec(href)[1];
 
     dcsMultiTrack('DCS.dcsuri', '/Selvbetjening/Husk', 'WT.ti', 'Selvbetjening Husk', 'DCSext.KPI', 'Husk', 'DCSext.Husk', '1', 'DCSext.Ref', matID, 'WT.dl', '0');
+
+    _gaq.push(['_trackEvent', 'Reservation', 'Add to cart', matID]);
   });
 
   $(".ting-object-buttons .reserve-now").click(function () {
@@ -32,6 +40,8 @@ jQuery(function($) {
         matID = /ding\/reservation\/(\d+)/.exec(href)[1];
 
     dcsMultiTrack('DCS.dcsuri', '/Selvbetjening/Reserver', 'WT.ti', 'Selvbetjening Reserver', 'DCSext.KPI', 'Reserver', 'DCSext.Reserver', '1', 'DCSext.Ref', matID, 'WT.dl', '0');
+
+    _gaq.push(['_trackEvent', 'Reservation', 'Reserve now', matID]);
   });
 
 });
