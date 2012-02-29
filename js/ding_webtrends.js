@@ -2,9 +2,20 @@
 jQuery(function($) {
   "use strict";
 
-  // When the user clicks the login form, we track that with webtrends.
-  $(".ding-login-form .form-submit").mouseup(function () {
+  // Track a log in action.
+  var logInAction = function () {
     dcsMultiTrack('DCS.dcsuri', '/login/Step1', 'WT.ti', 'Login-Step1', 'WT.si_n', 'Login', 'WT.si_x', '1', 'WT.dl', '0');
+  };
+
+  // When the user clicks the login form, we track that with webtrends.
+  $(".ding-login-form .form-submit").click(logInAction);
+
+  // When user presses enter in the login form somewhere, track it as a
+  // login action as well.
+  $(".ding-login-form input").keydown(function (event) {
+    if (event.keyCode === 13) {
+      logInAction();
+    }
   });
 
   $(".ting-object-buttons .add-to-cart a").mouseup(function () {
