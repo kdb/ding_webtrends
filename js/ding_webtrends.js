@@ -18,7 +18,7 @@ jQuery(function($) {
     }
   });
 
-  $(".ting-object-buttons .add-to-cart a").mouseup(function () {
+  $(".ting-object-buttons .add-to-cart a").click(function () {
     // Get the material ID from the link URL target so we can pass it
     // along to WebTrends.
     var href = this.href,
@@ -27,7 +27,7 @@ jQuery(function($) {
     dcsMultiTrack('DCS.dcsuri', '/Selvbetjening/Husk', 'WT.ti', 'Selvbetjening Husk', 'DCSext.KPI', 'Husk', 'DCSext.Husk', '1', 'DCSext.Ref', matID, 'WT.dl', '0');
   });
 
-  $(".ting-object-buttons .reserve-now").mouseup(function () {
+  $(".ting-object-buttons .reserve-now").click(function () {
     var href = this.href,
         matID = /ding\/reservation\/(\d+)/.exec(href)[1];
 
@@ -35,5 +35,3 @@ jQuery(function($) {
   });
 
 });
-
-
