@@ -24,6 +24,7 @@ jQuery(function($) {
     }
   });
 
+  // Track when the “Add to cart” button is pressed.
   $(".ting-object-buttons .add-to-cart a").click(function () {
     // Get the material ID from the link URL target so we can pass it
     // along to WebTrends.
@@ -35,6 +36,7 @@ jQuery(function($) {
     _gaq.push(['_trackEvent', 'Reservation', 'Add to cart', matID]);
   });
 
+  // Track when the “Reserve now” button is pressed.
   $(".ting-object-buttons .reserve-now").click(function () {
     var href = this.href,
         matID = /ding\/reservation\/(\d+)/.exec(href)[1];
@@ -44,4 +46,10 @@ jQuery(function($) {
     _gaq.push(['_trackEvent', 'Reservation', 'Reserve now', matID]);
   });
 
+  // Track when the user attempts to log in with WAYF.
+  $('#block-ding-wayf a').click(function () {
+    logInAction();
+
+    _gaq.push(['_trackEvent', 'Login', 'WAYF link clicked']);
+  });
 });
