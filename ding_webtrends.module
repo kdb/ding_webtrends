@@ -12,7 +12,10 @@ function ding_webtrends_init() {
 
   // Add a special meta-tag on the page signifying that we're logged in.
   if (user_is_logged_in()) {
-    drupal_set_html_head('<meta name="DCSext.Login" content="1" />');
+    drupal_set_html_head('<meta name="DCSext.Login" content="Ja" />');
+  }
+  else {
+    drupal_set_html_head('<meta name="DCSext.Login" content="Nej" />');
   }
 }
 
