@@ -6,11 +6,18 @@ var _gaq = _gaq || [];
 jQuery(function($) {
   "use strict";
 
+  // To make sure we don't fire the login event twice, which happens
+  // since triggering the form with enter seems to provide a click-event
+  // on the submit button in some browsers and not in others.
+  var logInActionTriggered = false;
+
   // Track a log in action.
   var logInAction = function () {
-    dcsMultiTrack('DCS.dcsuri', '/login/Step1', 'WT.ti', 'Login-Step1', 'WT.si_n', 'Login', 'WT.si_x', '1', 'WT.dl', '0');
+    if (!logInActionTriggered) {
+      dcsMultiTrack('DCS.dcsuri', '/login/Step1', 'WT.ti', 'Login-Step1', 'WT.si_n', 'Login', 'WT.si_x', '1', 'WT.dl', '0');
 
-    _gaq.push(['_trackEvent', 'Login', 'Form submitted']);
+      _gaq.push(['_trackEvent', 'Login', 'Form submitted']);
+    }
   };
 
   // When the user clicks the login form, we track that with webtrends.
